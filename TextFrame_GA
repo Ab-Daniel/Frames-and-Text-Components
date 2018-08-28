@@ -1,0 +1,57 @@
+import java.util.Random;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class TextFrame_GA 
+{
+	
+	public static void main(String[] args) 
+	{
+		
+		JTextArea textArea = new JTextArea(getRoll(), 10, 30);
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300, 300);
+		frame.add(scrollPane);
+		
+		/*
+		Random rand = new Random();
+		
+		
+		int x = 0;
+		while (x < 11)
+		{
+			x=x+1;
+			rollInt = rand.nextInt(6)+1;
+			roll = Integer.toString(rollInt);
+		}
+		*/
+		
+	}
+	
+	public static String getRoll()
+	{
+		
+		int x = 0;
+		while (x < 11)
+		{
+			x=x+1;
+			rollInt = rand.nextInt(6)+1;
+			roll = Integer.toString(rollInt);
+		}
+		
+		return roll;
+		
+	}
+	
+	static Random rand = new Random();
+	
+	static int rollInt;
+	static String roll;
+	
+}

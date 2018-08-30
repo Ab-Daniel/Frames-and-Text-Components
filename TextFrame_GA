@@ -1,6 +1,10 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -10,30 +14,67 @@ public class TextFrame_GA
 	public static void main(String[] args) 
 	{
 		
-		JTextArea textArea = new JTextArea(getRoll(), 10, 30);
+		//JTextArea textArea = new JTextArea(10, 30);
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
+		frame.setTitle("Text Area Window");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(300, 300);
 		frame.add(scrollPane);
 		
+		
+		JFrame controlFrame = new JFrame();
+		controlFrame.setVisible(true);
+		controlFrame.setTitle("Control Panel");
+		controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		controlFrame.setSize(300, 100);
+		controlFrame.add(controlPanel);
+		controlPanel.add(rollButton());
+		controlFrame.pack();
+		
+		//Random rand = new Random();
+		
 		/*
-		Random rand = new Random();
-		
-		
 		int x = 0;
-		while (x < 11)
+		while (x < 10)
 		{
 			x=x+1;
 			rollInt = rand.nextInt(6)+1;
 			roll = Integer.toString(rollInt);
+			textArea.append(roll+" ");
 		}
 		*/
 		
 	}
 	
+	public static JButton rollButton()
+	{
+		
+		JButton button = new JButton("roll");
+		
+		class ButtonListener implements ActionListener
+		{
+			
+			public void actionPerformed(ActionEvent event)
+			{
+				
+				rollInt = rand.nextInt(6)+1;
+				roll = Integer.toString(rollInt);
+				textArea.append(roll+" ");
+				
+			}
+			
+		}
+		
+		ActionListener listener = new ButtonListener();
+		button.addActionListener(listener);
+		return button;
+		
+	}
+	
+	/*
 	public static String getRoll()
 	{
 		
@@ -48,6 +89,11 @@ public class TextFrame_GA
 		return roll;
 		
 	}
+	*/
+	
+	static JTextArea textArea = new JTextArea(10, 30);
+	
+	final static JPanel controlPanel = new JPanel();
 	
 	static Random rand = new Random();
 	
